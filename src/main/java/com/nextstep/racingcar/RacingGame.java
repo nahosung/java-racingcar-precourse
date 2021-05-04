@@ -28,4 +28,12 @@ public class RacingGame {
 		}
 	}
 	
+	public static void inputConut() {
+		System.out.println("시도할 회수는 몇회인가요?");
+		Scanner sc = new Scanner(System.in);
+		String inputCount = sc.next();
+		ValidationUtils.errorMsg(ValidationUtils.validNumber(inputCount), ValidationUtils.msg_03);
+		count = Integer.parseInt(inputCount);
+	}
+	
 }

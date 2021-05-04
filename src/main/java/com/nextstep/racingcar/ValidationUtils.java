@@ -28,6 +28,10 @@ public class ValidationUtils {
 		}
 		return true;
 	}
+	
+	public static boolean validNumber(String count) {
+		return count.matches("[+-]?\\d*(\\.\\d+)?");
+	}
 
 	public static void errorMsg(boolean value, String msg) {
 		if (value == false) {

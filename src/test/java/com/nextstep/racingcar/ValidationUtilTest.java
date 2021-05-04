@@ -18,4 +18,23 @@ public class ValidationUtilTest {
 		assertThat(ValidationUtils.validNameSplitComma(",")).isFalse();
 	}
 	
+	@Test
+	@DisplayName("입력 받은 자동차 이름 체크 - 자동차 이름은 5자 이하만 가능")
+	void carNameLengthCheck() {
+		assertThat(ValidationUtils.validNameLength("user1")).isTrue();
+		assertThat(ValidationUtils.validNameLength("u")).isTrue();
+		assertThat(ValidationUtils.validNameLength("user123")).isFalse();
+		assertThat(ValidationUtils.validNameLength("")).isFalse();
+	}
+	
+	@Test
+	@DisplayName("입력 받은 숫자 체크 - 숫자가 아닌경우 에러 메시지 표시")
+	void numberCheck() {
+		assertThat(ValidationUtils.validNumber("0")).isTrue();
+		assertThat(ValidationUtils.validNumber("1")).isTrue();
+		assertThat(ValidationUtils.validNumber("9")).isTrue();
+		assertThat(ValidationUtils.validNumber("999")).isTrue();
+		assertThat(ValidationUtils.validNumber("test")).isFalse();
+	}
+	
 }

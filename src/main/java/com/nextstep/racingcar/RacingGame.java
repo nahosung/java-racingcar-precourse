@@ -41,6 +41,7 @@ public class RacingGame {
 		for (int i = 0; i < count; i++) {
 			racingPosition();
 		}
+		resultRacing();
 	}
 	
 	public static void racingPosition(){
@@ -78,5 +79,36 @@ public class RacingGame {
 		System.out.println();
 	}
 	
+	public static void resultRacing(){
+		int maxPosition = 0;
+		for (int i = 0; i < carList.size(); i++) {
+			CarVO carVO = carList.get(i);
+			maxPosition = maxPosition(maxPosition, carVO.getPosition());
+		} 
+		printRacingWin(maxPosition);
+	}
+	
+	public static int maxPosition(int maxPosition, int position){
+		if (maxPosition < position){
+			return position;
+		}
+		return maxPosition;
+	}
+	
+	public static void printRacingWin(int maxPosition){
+		String name = "";
+		for (int i = 0; i < carList.size(); i++) {
+			CarVO carVO = carList.get(i);
+			name += findWinner(maxPosition, carVO);
+		} 
+		System.out.println(name+"가 최종 우승했습니다.");
+	}
+	
+	public static String findWinner(int maxPosition, CarVO carVO){
+		if (maxPosition == carVO.getPosition()){
+			return carVO.getName()+"\t";
+		}
+		return "";
+	}
 	
 }

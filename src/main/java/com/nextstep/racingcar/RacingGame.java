@@ -36,4 +36,39 @@ public class RacingGame {
 		count = Integer.parseInt(inputCount);
 	}
 	
+	public static void racingStart() {
+		System.out.println("실행 결과");
+		for (int i = 0; i < count; i++) {
+			racingPosition();
+		}
+	}
+	
+	public static void racingPosition(){
+		for (int j = 0; j < carList.size(); j++) {
+			CarVO carVO = carList.get(j);
+			carVO = racing(carVO);
+			carList.set(j, carVO);
+		}
+		System.out.println();
+	}
+	
+	public static CarVO racing(CarVO carVO) {
+		int number = createMoveNumber();
+		CarVO racingCarVO = carVO;
+		if (number > 3) {
+			int position = carVO.getPosition();
+			position += 1;
+			racingCarVO.setPosition(position);
+		}
+		return racingCarVO;
+	}
+	
+	public static int createMoveNumber() {
+		int randomNumber = ValidationUtils.makeRandomNumber();
+		ValidationUtils.errorMsg(ValidationUtils.validRandomNumber(randomNumber), ValidationUtils.msg_04);
+		return randomNumber;
+	}
+	
+	
+	
 }

@@ -39,4 +39,16 @@ public class ValidationUtils {
 		}
 	}
 	
+	public static boolean validRandomNumber(int number) {
+		if(number < MIN_NO || number > MAX_NO) {
+			return false;
+		}
+		return true;
+	}
+
+	public static int makeRandomNumber() {
+		Random random = new Random();
+		return random.nextInt(MAX_NO)+MIN_NO;
+	}
+	
 }

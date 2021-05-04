@@ -37,4 +37,22 @@ public class ValidationUtilTest {
 		assertThat(ValidationUtils.validNumber("test")).isFalse();
 	}
 	
+	@Test
+	@DisplayName("0~9 사이 랜덤 숫자 체크")
+	void randomNumber() {
+		assertThat(ValidationUtils.validRandomNumber(0)).isTrue();
+		assertThat(ValidationUtils.validRandomNumber(9)).isTrue();
+		assertThat(ValidationUtils.validRandomNumber(10)).isFalse();
+		assertThat(ValidationUtils.validRandomNumber(-1)).isFalse();
+	}
+	
+	@Test
+	@DisplayName("0~9 사이 랜덤 숫자 생성")
+	void makeRandomNumber() {
+		assertThat(ValidationUtils.makeRandomNumber()).isBetween(0, 9);
+		assertThat(ValidationUtils.makeRandomNumber()).isBetween(0, 9);
+		assertThat(ValidationUtils.makeRandomNumber()).isBetween(0, 9);
+		assertThat(ValidationUtils.makeRandomNumber()).isBetween(0, 9);
+	}
+	
 }

@@ -48,6 +48,7 @@ public class RacingGame {
 			CarVO carVO = carList.get(j);
 			carVO = racing(carVO);
 			carList.set(j, carVO);
+			printCarPosition(carVO);
 		}
 		System.out.println();
 	}
@@ -69,6 +70,13 @@ public class RacingGame {
 		return randomNumber;
 	}
 	
+	public static void printCarPosition(CarVO carVO){
+		System.out.print(carVO.getName()+" : ");
+		for (int i = 1; i <= carVO.getPosition(); i++) {
+			System.out.print("-");
+		}
+		System.out.println();
+	}
 	
 	
 }
